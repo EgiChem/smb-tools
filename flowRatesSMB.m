@@ -1,4 +1,5 @@
-function flowRatesSMB()
+% Given eluent, feed, extract and zone I flow-rates, calculate all
+% remaining classic SMB flow-rates.
 clc
 
 %% INPUTS:

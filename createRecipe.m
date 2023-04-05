@@ -1,3 +1,5 @@
+% Create a SMB recipe file to use in the SMB control program.
+
 %% INPUTS
 filename = 'recipe';
 columns = 4;
