@@ -1,4 +1,4 @@
-function process_1col_log(filepath, pump, detector)
+function [xypeak, time, detect, pumpP] = process_log_1col(filepath, pump, detector)
 % Process chromatogram data from SMB unit log file. Creates pressure and 
 % absorbance plots.
 %
@@ -8,8 +8,14 @@ function process_1col_log(filepath, pump, detector)
 %
 % This function is a simpler version of the process_log.m script.
 %
+% Examples:
+%   process_log_1col('sample-files/chrom_DHAEE_EPAEE_0_4_C18.txt')
+% 
+%   data = process_log_1col('sample-files/chrom_DHAEE_EPAEE_0_4_C18.txt')
+%
 % José Aniceto
 
+% Argument handling (requires MATLAB 2022+)
 arguments
     filepath char;
     pump (1,1) double {mustBeMember(pump, [1 2 3 4])} = 1
@@ -26,6 +32,8 @@ pumpQ = data{:,pump+1};  % mL/min, pump flow-rate
 pumpP = data{:,pump+6};  % bar, pump pressure
 detect = data{:,detector+10};  % mAU, detector absorbance
 
+xypeak(:,1) = time;
+xypeak(:,2) = detect;
 
 %% Process data
 % Set default styles for plots
