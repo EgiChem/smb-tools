@@ -13,14 +13,16 @@ QF = 1/1;
 QX = 1.5/1;
 Q1 = 3/1;
 
+
 %% CALCULATIONS
 if exist('QE', 'var') && exist('QX', 'var') && exist('QF', 'var') && exist('Q1', 'var')
-    Q2 = Q1 - QE;
+    Q2 = Q1 - QX;
     Q3 = Q2 + QF;
     Q4 = Q1 - QE;
     QR = Q3 - Q4;
 
 else
+
     error('Fail')
 end
 
@@ -36,5 +38,5 @@ fprintf([ ...
     'P2 (%s): %.2f \n' ...
     'P3 (%s): %.2f \n' ...
     'P4 (%s): %.2f \n' ...
-    'Coriolis (%s): %.2f\n\n' ...
+    'Cor (%s): %.2f\n\n' ...
 ], P1, eval(P1), P2, eval(P2), P3, eval(P3), P4, eval(P4), Cor, eval(Cor))
