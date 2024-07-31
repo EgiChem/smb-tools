@@ -1,11 +1,11 @@
-function plotLangmuirSepRegion(Q, b, Cfeed, m2m3)
+function plotLangmuirSepRegion(Q, b, Cfeed, m2_m3)
 % Plots the triangular separation region for a Langmuir isotherm.
 
 arguments
     Q (1,2) double
     b (1,2) double
     Cfeed (1,2) double
-    m2m3 = []
+    m2_m3 = []
 end
 
 lambda = b .* Q;
