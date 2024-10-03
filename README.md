@@ -2,7 +2,15 @@
 
 Collection of tools and scripts to manage SMB unit operation.
 
-## `process_1col_log`
+
+## Examples
+
+Check the [examples.mlx](examples.mlx) file for details
+
+
+## Main tools
+
+### `process_1col_log`
 
 Process chromatogram data from SMB unit log file. Creates pressure and absorbance plots.
 
@@ -19,18 +27,17 @@ Specifying that pump 1 and detector 2 are in use:
 ```
 
 
-## `process_log`
+### `process_log`
 
 Process chromatogram data from SMB unit log file. Creates flow-rate, pressure and absorbance plots for all pumps and detector.
 
 Usage: Input the log file path (including extension) in the `filepath` variable.
 
 
-## `flowRatesSMB`
 
-Given eluent, feed, extract and zone I flow-rates, calculate all remaining classic SMB flow-rates.
+### `createRun`
 
-
-## `createRecipe`
-
-Create a SMB recipe file to use in the SMB control program..
+Prepare for a SMB run. This script:
+- calculates flowrates by mass balance for a classic 4-zone SMB. 
+- provides values for EgiChem SMB unit pumps P1 - P4 and MFC (Coriolis).
+- generates a recipe file from the calculated flowrates
