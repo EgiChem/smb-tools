@@ -7,21 +7,22 @@
 %
 % José Aniceto
 
+clear;
 
 %% Inputs
 % Provide flow flowrates. Provide values for QE, QF and Q1. Also provide either QR or QX.
-fr = struct();
-fr.QE = 2;
-fr.QF = 1;
-fr.QX = 1.5;
-fr.Q1 = 3;
+fr.QE = 6;
+fr.QF = 1.72;
+fr.QX = 4.80;
+fr.Q1 = 10;
 
 % If pump position is changed in SMB configuration, make the correct adjustments below.
 P1 = 'QE';
-P2 = 'QX';
+P2 = 'Q1';
 P3 = 'Q3';
 P4 = 'QF';
 Cor = 'Q2';
+CorIPB = 'Q4';
 
 % SMB configuration (columns per section) for genarating recipe
 generate_recipe = false;
@@ -38,7 +39,8 @@ flows = dictionary( ...
     'P2', fr.(P2), ...
     'P3', fr.(P3), ...
     'P4', fr.(P4), ...
-    'Cor', fr.(Cor) ...
+    'Cor', fr.(Cor), ...
+    'CorIPB', fr.(CorIPB) ...
 );
 
 
@@ -59,5 +61,6 @@ fprintf([ ...
     'P2  (%s) = %.2f \n' ...
     'P3  (%s) = %.2f \n' ...
     'P4  (%s) = %.2f \n' ...
-    'Cor (%s) = %.2f\n\n' ...
-], P1, fr.(P1), P2, fr.(P2), P3, fr.(P3), P4, fr.(P4), Cor, fr.(Cor))
+    'Cor (%s) = %.2f\n' ...
+    'CorIPB (%s) = %.2f\n\n' ...
+], P1, fr.(P1), P2, fr.(P2), P3, fr.(P3), P4, fr.(P4), Cor, fr.(Cor), CorIPB, fr.(CorIPB))
