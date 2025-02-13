@@ -7,7 +7,8 @@
 
 
 %% Inputs 
-filepath = 'sample-files/chrom_DHAEE_0_2_C18.txt';
+% filepath = 'sample-files/chrom_DHAEE_0_2_C18.txt';
+filepath = 'Z:\SMB Tests\2025-02-11\run_Q10';
 
 
 %% Read data from file
@@ -42,19 +43,29 @@ fprintf('%s \n\n', data.Properties.RowNames{1});
 figure
 subplot(2,3,1)
 plot(time, pump1Q, '-')
-ylabel('{\itA} (mL/min)')
+ylabel('{\itQ}_{P1} (mL/min)')
+
 subplot(2,3,2)
 plot(time, pump2Q, '-')
+ylabel('{\itQ}_{P2} (mL/min)')
+
 subplot(2,3,3)
 plot(time, pump3Q, '-')
 subplot(2,3,4)
+ylabel('{\itQ}_{P3} (mL/min)')
+
 plot(time, pump4Q, '-')
 xlabel('{\itt} (min)')
-ylabel('{\itA} (mL/min)')
+ylabel('{\itQ}_{P4} (mL/min)')
+
 subplot(2,3,5)
 plot(time, coriQ, '-')
 xlabel('{\itt} (min)')
+ylabel('{\itQ}_{Cor} (mL/min)')
 
+sgtitle('Flow rates') 
+
+% Flow-rates in the same plot
 figure
 plot(time, pump1Q, '-')
 hold on;
@@ -63,24 +74,33 @@ plot(time, pump3Q, '-')
 plot(time, pump4Q, '-')
 plot(time, coriQ, '-')
 xlabel('{\itt} (min)')
-ylabel('{\itA} (mL/min)')
+ylabel('{\itQ} (mL/min)')
 legend('Pump 1', 'Pump 2', 'Pump 3', 'Pump 4', 'Coriolis', Location='best')
+title('Flow rates') 
 
 % Pressure
 figure
 subplot(2,2,1)
 plot(time, pump1P, '-')
-ylabel('{\itP} (bar)')
+ylabel('{\itP}_{P1} (bar)')
+
 subplot(2,2,2)
 plot(time, pump2P, '-')
+ylabel('{\itP}_{P2} (bar)')
+
 subplot(2,2,3)
 plot(time, pump3P, '-')
 xlabel('{\itt} (min)')
-ylabel('{\itP} (bar)')
+ylabel('{\itP}_{P3} (bar)')
+
 subplot(2,2,4)
 plot(time, pump4P, '-')
 xlabel('{\itt} (min)')
+ylabel('{\itP}_{P4} (bar)')
 
+sgtitle('Pressures in the pumps') 
+
+% Pressures in the same plot
 figure
 plot(time, pump1P, '-')
 hold on;
@@ -90,6 +110,7 @@ plot(time, pump4P, '-')
 xlabel('{\itt} (min)')
 ylabel('{\itP} (bar)')
 legend('Pump 1', 'Pump 2', 'Pump 3', 'Pump 4', Location='best')
+title('Pressures in the pumps') 
 
 % Detector
 figure
