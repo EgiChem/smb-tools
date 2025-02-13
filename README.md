@@ -5,10 +5,12 @@ Collection of tools and scripts to manage SMB unit operation.
 
 ## Examples
 
-Check the [examples.mlx](examples.mlx) file for details
+- [examples.mlx](examples.mlx) for solvent properties, pressure drops calculations;
+- [examples_flowrates.mlx](examples_flowrates.mlx) for SMB flowrate calculations;
+- [examples_utils.mlx](examples_utils.mlx) for examples as some utilities.
 
 
-## Main tools
+## Main scripts
 
 ### `process_1col_log`
 
@@ -33,6 +35,12 @@ Process chromatogram data from SMB unit log file. Creates flow-rate, pressure an
 
 Usage: Input the log file path (including extension) in the `filepath` variable.
 
+
+### `process_Bronkhorst`
+
+Process Bronkhorst Flow Suite log file and create flow rate plots.
+
+Usage: Input the log file path (including extension) in the `datafiles` variable.
 
 
 ### `createRun`
