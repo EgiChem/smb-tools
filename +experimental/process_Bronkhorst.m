@@ -2,7 +2,6 @@
 
 %% INPUTS
 datafiles = {
-    % 'sample-files/Bronkhorst FlowSuite Export 1 sec 2025_01_17 13_41_34-almoco.csv',
     % 'sample-files/Bronkhorst FlowSuite Export 1 sec 2025_01_17 16_10_20.csv'
     % 'Z:\SMB Tests\2025-02-11\Bronkhorst FlowSuite Export 1 sec 2025_02_11 15_44_14.csv',
     'Z:\SMB Tests\2025-02-11\Bronkhorst FlowSuite Export 1 sec 2025_02_11 16_03_23.csv'
