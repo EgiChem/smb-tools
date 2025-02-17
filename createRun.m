@@ -46,7 +46,7 @@ flows = dictionary( ...
 
 % Create recipe
 if generate_recipe
-    smb.generateRecipeFile(config, flows, tsw)
+    experimental.generateRecipeFile(config, flows, tsw)
 end
 
 
