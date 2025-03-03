@@ -5,14 +5,15 @@ Collection of tools and scripts to manage SMB unit operation.
 
 ## Examples
 
-- [examples.mlx](examples.mlx) for solvent properties, pressure drops calculations;
+- [examples_solvents.mlx](examples_solvents.mlx) for solvent properties, pressure drops calculations;
 - [examples_flowrates.mlx](examples_flowrates.mlx) for SMB flowrate calculations;
+- [examples_triangleTheory.mlx](examples_triangleTheory.mlx) for the Triangle Theory;
 - [examples_utils.mlx](examples_utils.mlx) for examples as some utilities.
 
 
 ## Main scripts
 
-### `process_1col_log`
+### `experimental.process_1col_log`
 
 Process chromatogram data from SMB unit log file. Creates pressure and absorbance plots.
 
@@ -29,14 +30,14 @@ Specifying that pump 1 and detector 2 are in use:
 ```
 
 
-### `process_log`
+### `experimental.process_log`
 
 Process chromatogram data from SMB unit log file. Creates flow-rate, pressure and absorbance plots for all pumps and detector.
 
 Usage: Input the log file path (including extension) in the `filepath` variable.
 
 
-### `process_Bronkhorst`
+### `experimental.process_Bronkhorst`
 
 Process Bronkhorst Flow Suite log file and create flow rate plots.
 
