@@ -2,10 +2,10 @@
 
 %% INPUTS
 datafiles = {
-    % 'sample-files/Bronkhorst FlowSuite Export 1 sec 2025_01_17 16_10_20.csv'
-    % 'Z:\SMB Tests\2025-02-11\Bronkhorst FlowSuite Export 1 sec 2025_02_11 15_44_14.csv',
-    'Z:\SMB Tests\2025-02-11\Bronkhorst FlowSuite Export 1 sec 2025_02_11 16_03_23.csv'
+    'sample-files/Bronkhorst FlowSuite Export 1 sec 2025_01_17 16_10_20.csv'
 };
+
+signals = 'all';  % which signals to plot (all, one or two)
 
 
 %% LOAD AND PROCESS DATA
@@ -15,13 +15,18 @@ if n_files > 3
     warning('Too many data files may make plots difficult to read. Try reducing the number of datafiles to analyze at once.')
 end
 
-ymax = 1;  % initial y-axis max range
+% Set default styles for plots
+set(0, 'DefaultLineLineWidth', 1.5);
 
+fprintf('Processing data from log file... \n');
+
+ymax = 1;  % initial y-axis max range
 for i = 1:n_files
 
     % Load CSV file
-    filename = datafiles{i};
-    data = readtable(filename, 'Delimiter', ';', 'DecimalSeparator', ',');
+    filepath = datafiles{i};
+    fprintf('%s \n', filepath);
+    data = readtable(filepath, 'Delimiter', ';', 'DecimalSeparator', ',');
     
     % Calculate elapsed time
     data.ElapsedTime = minutes(data.TimeStamp - data.TimeStamp(1));
@@ -29,14 +34,22 @@ for i = 1:n_files
     % Plot flow-rates
     figure(1)
     subplot(n_files, 1, i)
-    plot(data.ElapsedTime, data{:,3}, LineStyle='-')  % Coriolis 1 flow
-    hold on;
-    plot(data.ElapsedTime, data{:,2}, LineStyle='--')  % Coriolis 1 set-point
-    plot(data.ElapsedTime, data{:,5}, LineStyle='-')  % Coriolis 2 flow
-    plot(data.ElapsedTime, data{:,4}, LineStyle='--')  % Coriolis 2 set-point
+    legend_array = {};
+    if strcmp(signals, 'one') || strcmp(signals, 'all')
+        plot(data.ElapsedTime, data{:,3}, LineStyle='-')  % Coriolis 1 flow
+        hold on;
+        plot(data.ElapsedTime, data{:,2}, LineStyle='--')  % Coriolis 1 set-point
+        legend_array = [legend_array, {'MFC1 flow', 'MFC1 setpoint'}];
+    end
+    if strcmp(signals, 'two') || strcmp(signals, 'all')
+        plot(data.ElapsedTime, data{:,5}, LineStyle='-')  % Coriolis 2 flow
+        hold on;
+        plot(data.ElapsedTime, data{:,4}, LineStyle='--')  % Coriolis 2 set-point
+        legend_array = [legend_array, {'MFC2 flow', 'MFC2 setpoint'}];
+    end
 
     % Get y-axis max value and update final ymax if needed
-    current_ymax = max(data{:,3});
+    current_ymax = max( [max(data{:,3}), max(data{:,5})] );
     if current_ymax > ymax
         ymax = current_ymax;
     end
@@ -50,4 +63,11 @@ for i = 1:n_files
     ylabel('Flow (ml/min)')
 end
 xlabel('Time (min)')
-legend({'MFC1 setpoint', 'MFC1 flow', 'MFC2 setpoint', 'MFC2 flow'}, Location="northeast")
+legend(legend_array, Location="southeast")
+
+% Print info
+fprintf('Plot ranges:\n');
+fprintf('x-axis: 0 - %.2f\n', max(data.ElapsedTime));
+fprintf('y-axis: 0 - %.2f\n', ymax);
+fprintf('To change plot axis you can run the following command: \n');
+fprintf('axis([xmin xmax  ymin ymax])\n\n');

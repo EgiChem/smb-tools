@@ -7,9 +7,7 @@
 
 
 %% Inputs 
-% filepath = 'sample-files/chrom_DHAEE_0_2_C18.txt';
-filepath = 'Z:\SMB Tests\2025-02-11\run_Q15';
-filepath = 'Z:\SMB Tests\2025-02-11\limpeza';
+filepath = 'sample-files/chrom_DHAEE_0_2_C18.txt';
 
 
 %% Read data from file
