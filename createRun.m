@@ -11,15 +11,15 @@ clear;
 
 %% Inputs
 % Provide flow flowrates. Provide values for QE, QF and Q1. Also provide either QR or QX.
-fr.QE = 6;
-fr.QF = 1.72;
-fr.QX = 4.80;
-fr.Q1 = 10;
+fr.QE = 9.40;
+fr.QF = 1.54;
+fr.QX = 7.32;
+fr.Q1 = 15;
 
 % If pump position is changed in SMB configuration, make the correct adjustments below.
 P1 = 'QE';
 P2 = 'Q1';
-P3 = 'Q3';
+P3 = 'QR';
 P4 = 'QF';
 Cor = 'Q2';
 CorIPB = 'Q4';
@@ -27,7 +27,7 @@ CorIPB = 'Q4';
 % SMB configuration (columns per section) for genarating recipe
 generate_recipe = false;
 config = [1 2 2 1];
-tsw = 1;
+tsw = 2;
 
 
 %% Tasks
