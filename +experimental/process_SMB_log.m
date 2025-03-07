@@ -45,14 +45,14 @@ out = struct( ...
     'pump1P', pump1P, 'pump2P', pump2P, 'pump3P', pump3P, 'pump4P', pump4P, 'detect1', detect1, 'detect2', detect2 ...
 );
 
+% Print file data
+fprintf('Processing data from log file... \n');
+fprintf('%s \n', filepath);
+fprintf('%s \n\n', data.Properties.RowNames{1});
+
 if make_plots
     % Set default styles for plots
     set(0, 'DefaultLineLineWidth', 1.5);
-    
-    % Print file data
-    fprintf('Processing data from log file... \n');
-    fprintf('%s \n', filepath);
-    fprintf('%s \n\n', data.Properties.RowNames{1});
     
     % Flow-rate
     figure
@@ -145,7 +145,7 @@ if make_plots
     plot(time, detect2, '-')
     xlabel('{\itt} (min)')
     ylabel('{\itA} (mAU)')
-    
+
 end
 
 end
