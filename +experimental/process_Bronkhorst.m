@@ -59,6 +59,7 @@ if make_plots
         hold on;
         plot(data.time, data{:,2}, LineStyle='--')  % Coriolis 1 set-point
         legend_array = [legend_array, {'MFC1 flow', 'MFC1 setpoint'}];
+        ymax = max( [ymax, max(data{:,3})] );
     end
     
     if strcmp(signals, 'two') || strcmp(signals, 'all')
@@ -66,13 +67,14 @@ if make_plots
         hold on;
         plot(data.time, data{:,4}, LineStyle='--')  % Coriolis 2 set-point
         legend_array = [legend_array, {'MFC2 flow', 'MFC2 setpoint'}];
+        ymax = max( [ymax, max(data{:,5})] );
     end
     
     % Get y-axis max value and update final ymax if needed
-    current_ymax = max( [max(data{:,3}), max(data{:,5})] );
-    if current_ymax > ymax
-        ymax = current_ymax;
-    end
+    % current_ymax = max( [max(data{:,3}), max(data{:,5})] );
+    % if current_ymax > ymax
+    %     ymax = current_ymax;
+    % end
     
     % Format plots
     for i = 1:1
