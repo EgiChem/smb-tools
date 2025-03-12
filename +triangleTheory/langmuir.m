@@ -1,4 +1,4 @@
-function [flowrates, tsw, outputs] = langmuir(Lc, Dc, epsb, Q, b, Cfeed, Q1_SMB, beta, gamma23, draw_region, show_gamma14)
+function [flowrates, tsw, outputs] = langmuir(Lc, Dc, epsb, Q, b, Cfeed, Q1_SMB, beta, gamma23, draw_region)
 
 arguments
     Lc (1,1) double  % column length
@@ -11,7 +11,6 @@ arguments
     beta (1,1) double {mustBeGreaterThanOrEqual(beta, 1)} = 1.0  % safetry factor (beta >= 1)
     gamma23 = []
     draw_region = true
-    show_gamma14 = false
 end
 
 %% Determine operating conditions
@@ -99,18 +98,6 @@ if draw_region
     plot(curve_rb_gammas(:,1), curve_rb_gammas(:,2), '-k', LineWidth=2)  % curve rb
     plot(gamma_TMB(2), gamma_TMB(3), 'or', MarkerFaceColor='r')  % gamma2-gamma3 operation point
 
-
-    % Plot the gamma1-gamma4 region
-    if show_gamma14
-        plot([F_lambda(2) F_lambda(2) r(2)], [r(1) F_lambda(1) F_lambda(1)], '-k', LineWidth=2)  % gamma1-gamma4 square
-        plot(gamma_TMB(1), gamma_TMB(4), 'or', MarkerFaceColor='r')  % gamma1-gamma4 operation point
-        % p = get(gca, 'Position');
-        % w = 0.03;
-        % h = 0.06;
-        % annotation('textbox', [(p(1)+p(3)-4*w) (p(2)) w h], 'String', 'm_1', 'EdgeColor', 'none');
-        % annotation('textbox', [(p(1)+p(3)-w) (p(2)+h) w h], 'String', 'm_4', 'EdgeColor', 'none', 'HorizontalAlignment', 'right');
-    end
-    
     % Format plot
     axis([r(1) r(2)  r(1) r(2)]);
     xlabel('{\gamma}_2')
